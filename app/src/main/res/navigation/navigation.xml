@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/newsFragment7">
+    <fragment
+        android:id="@+id/newsFragment7"
+        android:name="com.android.example.newapp.NewsFragment"
+        android:label="NewsFragment" >
+        <action
+            android:id="@+id/action_newsFragment7_to_newsDetailFragment3"
+            app:destination="@id/newsDetailFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment3"
+        android:name="com.android.example.newapp.NewsDetailFragment"
+        android:label="NewsDetailFragment" >
+        <argument
+            android:name="sentProperty"
+            app:argType="com.android.example.newapp.Article"/>
+        <action
+            android:id="@+id/action_newsDetailFragment3_to_newsFragment7"
+            app:destination="@id/newsFragment7"
+            app:popUpTo="@layout/fragment_news"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/ukFragment"
+        android:name="com.android.example.newapp.UkFragment"
+        android:label="UkFragment" />
+</navigation>

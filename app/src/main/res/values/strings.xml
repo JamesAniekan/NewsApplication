@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="uk_news">UNITED KINGDOM</string>
+    <string name="australia">AUSTRALIA</string>
+    <string name="sports">SPORTS</string>
+</resources>
