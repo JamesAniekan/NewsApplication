@@ -30,11 +30,10 @@ class UkFragment : Fragment() {
         val adapter = NewsAdapter(OnclickListener {
             viewModel.displayNewsDetail(it)
             //Toast.makeText(activity, it.title,Toast.LENGTH_LONG).show()
-            // this.findNavController().navigate(R.id.action_newsFragment7_to_newsDetailFragment3)
         })
         viewModel.navigateNewsDetail.observe(viewLifecycleOwner, {
            if(it != null) {
-                this.findNavController().navigate(NewsFragmentDirections.actionNewsFragment7ToNewsDetailFragment3(it))
+                this.findNavController().navigate(UkFragmentDirections.actionUkFragmentToNewsDetailFragment3(it))
               viewModel.doneNavigatingNewsDetail()
             }
         })

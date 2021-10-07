@@ -28,5 +28,9 @@
     <fragment
         android:id="@+id/ukFragment"
         android:name="com.android.example.newapp.UkFragment"
-        android:label="UkFragment" />
+        android:label="UkFragment" >
+        <action
+            android:id="@+id/action_ukFragment_to_newsDetailFragment3"
+            app:destination="@id/newsDetailFragment3" />
+    </fragment>
 </navigation>
