@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/newsFragment7">
     <fragment
@@ -31,6 +30,14 @@
         android:label="UkFragment" >
         <action
             android:id="@+id/action_ukFragment_to_newsDetailFragment3"
+            app:destination="@id/newsDetailFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/sportFragment"
+        android:name="com.android.example.newapp.SportFragment"
+        android:label="SportFragment" >
+        <action
+            android:id="@+id/action_sportFragment_to_newsDetailFragment3"
             app:destination="@id/newsDetailFragment3" />
     </fragment>
 </navigation>

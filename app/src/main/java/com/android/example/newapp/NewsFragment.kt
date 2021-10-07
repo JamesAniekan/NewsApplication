@@ -38,23 +38,9 @@ class NewsFragment : Fragment() {
             }
         })
         binding.newsList.adapter = adapter
-        setHasOptionsMenu(true)
 
          return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.over_flow, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId){
-            R.id.uk_news -> viewModel.getUkNews()
-            R.id.sports -> viewModel.getSportsNews()
-        }
-        return true
-    }
 }
 
