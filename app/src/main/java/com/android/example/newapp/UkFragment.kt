@@ -32,12 +32,12 @@ class UkFragment : Fragment() {
             //Toast.makeText(activity, it.title,Toast.LENGTH_LONG).show()
             // this.findNavController().navigate(R.id.action_newsFragment7_to_newsDetailFragment3)
         })
-        //viewModel.navigateNewsDetail.observe(viewLifecycleOwner, {
-         //   if(it != null) {
-         //       this.findNavController().navigate(NewsFragmentDirections.actionNewsFragment7ToNewsDetailFragment3(it))
-           //     viewModel.doneNavigatingNewsDetail()
-           // }
-       // })
+        viewModel.navigateNewsDetail.observe(viewLifecycleOwner, {
+           if(it != null) {
+                this.findNavController().navigate(NewsFragmentDirections.actionNewsFragment7ToNewsDetailFragment3(it))
+              viewModel.doneNavigatingNewsDetail()
+            }
+        })
         binding.healthNews.adapter = adapter
 
 
