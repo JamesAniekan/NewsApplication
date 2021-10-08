@@ -3,14 +3,12 @@
     <item
         android:id="@+id/ukFragment"
         android:title="@string/uk_news"/>
+    <item
+        android:id="@+id/ngFragment"
+        android:title="@string/nigeria"/>
 
     <item
         android:id="@+id/sportFragment"
         android:title="@string/sport"/>
-    <item
-        android:id="@+id/aus_news"
-        android:title="@string/australia"/>
-
-
 
 </menu>

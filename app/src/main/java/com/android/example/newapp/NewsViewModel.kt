@@ -72,6 +72,21 @@ class NewsViewModel : ViewModel() {
         }
     }
 
+    fun getNgNews(){
+        viewModelScope.launch {
+            try {
+                val resultObj = NewsObj.newsService.getNgNews()
+                _response.value = "success: $resultObj"
+
+                _property.value = resultObj.articles
+
+            }catch (e: Exception){
+                _response.value = "Failure ${e.message}"
+            }
+        }
+    }
+
+
     fun displayNewsDetail(article: Article){
         _navigateNewsDetails.value = article
     }

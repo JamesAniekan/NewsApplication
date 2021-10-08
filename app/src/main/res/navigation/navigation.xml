@@ -40,4 +40,12 @@
             android:id="@+id/action_sportFragment_to_newsDetailFragment3"
             app:destination="@id/newsDetailFragment3" />
     </fragment>
+    <fragment
+        android:id="@+id/ngFragment"
+        android:name="com.android.example.newapp.NgFragment"
+        android:label="NgFragment" >
+        <action
+            android:id="@+id/action_ngFragment_to_newsDetailFragment3"
+            app:destination="@id/newsDetailFragment3" />
+    </fragment>
 </navigation>

@@ -27,10 +27,11 @@ interface NewsApi{
     @GET("top-headlines?country=gb&apiKey=afd189ebbb624d6f88abf8156dda7a6b")
     suspend fun getUkNewsProperties(): NewsData
 
-    @GET("top-headlines?category=sports&apiKey=afd189ebbb624d6f88abf8156dda7a6b")
+   @GET("top-headlines?category=sports&apiKey=afd189ebbb624d6f88abf8156dda7a6b")
     suspend fun getSportsNews(): NewsData
 
-
+    @GET("top-headlines?country=ng&apiKey=afd189ebbb624d6f88abf8156dda7a6b")
+    suspend fun getNgNews(): NewsData
 }
 
 object NewsObj {
