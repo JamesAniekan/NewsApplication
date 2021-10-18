@@ -38,8 +38,8 @@ class NgFragment : Fragment() {
                 viewModel.doneNavigatingNewsDetail()
             }
         })
-        binding.ngNews.adapter = adapter
 
+        binding.ngNews.adapter = adapter
 
         return binding.root
 

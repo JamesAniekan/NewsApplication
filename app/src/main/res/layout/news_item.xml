@@ -7,57 +7,47 @@
         <variable
             name="article"
             type="com.android.example.newapp.Article" />
-
     </data>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="5dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="200dp"
+            android:layout_margin="0dp">
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
                 android:paddingTop="8dp"
                 android:text="@{article.title}"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_size"
-                app:layout_constraintBottom_toTopOf="@id/newsImage"
-                app:layout_constraintEnd_toEndOf="@id/right_well"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/newsImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/newsImage"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="hello android" />
 
             <ImageView
                 android:id="@+id/newsImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 app:imageUrl="@{article.urlToImage}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/left_well"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="8dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/right_well"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginEnd="14dp"
-                app:layout_constraintGuide_end="8dp" />
-
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
 </layout>

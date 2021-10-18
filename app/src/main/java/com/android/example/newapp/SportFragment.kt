@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.android.example.newapp.databinding.FragmentSportBinding
-import com.android.example.newapp.databinding.FragmentUkBinding
+
 
 class SportFragment : Fragment() {
 
@@ -19,7 +19,6 @@ class SportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
 
         val binding: FragmentSportBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_sport,
@@ -42,10 +41,9 @@ class SportFragment : Fragment() {
                 viewModel.doneNavigatingNewsDetail()
             }
         })
-        binding.sportNews.adapter = adapter
 
+        binding.sportNews.adapter = adapter
 
         return binding.root
     }
-
 }
