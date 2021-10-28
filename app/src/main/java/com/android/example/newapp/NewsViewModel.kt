@@ -62,7 +62,6 @@ class NewsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val resultObj = NewsObj.newsService.getSportsNews()
-                _response.value = "success: $resultObj"
 
                 _property.value = resultObj.articles
 

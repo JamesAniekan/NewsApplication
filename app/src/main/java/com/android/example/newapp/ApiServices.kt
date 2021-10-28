@@ -19,7 +19,7 @@ val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-interface NewsApi{
+interface NewsApi {
 
     @GET("top-headlines?country=us&apiKey=afd189ebbb624d6f88abf8156dda7a6b")
     suspend fun getNewsProperties(): NewsData

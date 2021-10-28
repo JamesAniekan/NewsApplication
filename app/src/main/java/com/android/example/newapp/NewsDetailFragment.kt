@@ -5,32 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.android.example.newapp.databinding.FragmentNewsDetailsBinding
 import com.android.example.newapp.Article
+import kotlinx.android.synthetic.main.fragment_news_details.*
 
 class NewsDetailFragment : Fragment() {
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
 
         val application = requireNotNull(activity).application
         // Inflate the layout for this fragment
-        val binding:FragmentNewsDetailsBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_news_details, container, false)
-        binding.lifecycleOwner = this
 
         val article = NewsDetailFragmentArgs.fromBundle(requireArguments()).sentProperty
 
-        val viewModelFactory = NewsDetailViewModelFactory(article, application)
+        detailView.apply { 
+            webViewClient = WebViewClient()
+            loadUrl(article.url)
+        }
 
-        binding.viewModel = ViewModelProvider(this, viewModelFactory).get(NewsDetailViewModel::class.java)
 
-
-        return binding.root
 
     }
 

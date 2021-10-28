@@ -13,7 +13,7 @@ fun bindImage(imgView: ImageView, urlToImage: String?){
     //   imgView.setImageResource(R.drawable.ic_launcher_foreground)
    //}
    // else{
-    urlToImage?.let{
+    urlToImage?.let {
         val imgUri = urlToImage.toUri().buildUpon().scheme("https").build()
 
         Glide.with(imgView.context)
