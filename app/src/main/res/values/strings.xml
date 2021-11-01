@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">NewsApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="uk_news">UNITED KINGDOM</string>
     <string name="sport">SPORTS</string>
     <string name="nigeria">NIGERIA</string>
+    <string name="errorMsg">Oops, error loading news.</string>
 </resources>

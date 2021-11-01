@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -14,7 +13,7 @@ import com.android.example.newapp.databinding.FragmentNewsBinding
 
 class NewsFragment : Fragment() {
 
- private val viewModel: NewsViewModel by lazy { ViewModelProvider(this).get(NewsViewModel::class.java)}
+    private val viewModel: NewsViewModel by lazy { ViewModelProvider(this).get(NewsViewModel::class.java)}
 
     override fun onCreateView(
        inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +25,10 @@ class NewsFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+
+
+        /**Adapter's click listener passes Article to viewmodel's navigateNewsDetail through
+         displayNewsDetail function **/
         val adapter = NewsAdapter(OnclickListener {
             viewModel.displayNewsDetail(it)
             //Toast.makeText(activity, it.title,Toast.LENGTH_LONG).show()
@@ -36,6 +39,18 @@ class NewsFragment : Fragment() {
             if(it != null) {
                 this.findNavController().navigate(NewsFragmentDirections.actionNewsFragment7ToNewsDetailFragment3(it))
                 viewModel.doneNavigatingNewsDetail()
+            }
+        })
+
+        viewModel.networkState.observe(viewLifecycleOwner, {
+            when(it){
+                NetworkState.LOADING -> binding.loadingProgressBar.visibility = View.VISIBLE
+                NetworkState.SUCCESS -> binding.loadingProgressBar.visibility = View.GONE
+                NetworkState.ERROR -> {
+                    binding.errorText.text = getString(R.string.errorMsg)
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.loadingProgressBar.visibility = View.GONE
+                }
             }
         })
 

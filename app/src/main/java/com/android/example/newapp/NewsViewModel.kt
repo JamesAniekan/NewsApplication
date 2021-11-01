@@ -8,6 +8,10 @@ import kotlinx.coroutines.launch
 
 class NewsViewModel : ViewModel() {
 
+    private val _networkState = MutableLiveData<NetworkState>()
+    val networkState: LiveData<NetworkState>
+        get() = _networkState
+
     private val _response = MutableLiveData<String>()
     val response: LiveData<String>
         get() = _response
@@ -32,14 +36,17 @@ class NewsViewModel : ViewModel() {
 
     private fun getNews(){
         viewModelScope.launch {
+
+            _networkState.value = NetworkState.LOADING
+
             try {
                 val resultObj = NewsObj.newsService.getNewsProperties()
-                _response.value = "success: $resultObj"
-
-                    _property.value = resultObj.articles
+                _property.value = resultObj.articles
+                _networkState.value = NetworkState.SUCCESS
 
             }catch (e: Exception){
-                _response.value = "Failure ${e.message}"
+                _networkState.value = NetworkState.ERROR
+                _property.value = ArrayList()
             }
         }
     }
