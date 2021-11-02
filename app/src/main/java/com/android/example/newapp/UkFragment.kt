@@ -26,6 +26,11 @@ class UkFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+        /**
+        On navigation to this fragment this viewmodel's function is called which triggers a network call to UK news endpoint.
+         The viewmodel's property LiveData list is populated and displayed on the recyclerview.
+         This pattern is followed across all fragments except the NavHostFragment.
+         */
         viewModel.getUkNews()
 
         val adapter = NewsAdapter(OnclickListener {
@@ -38,7 +43,9 @@ class UkFragment : Fragment() {
               viewModel.doneNavigatingNewsDetail()
             }
         })
+
         binding.healthNews.adapter = adapter
+
         (activity as AppCompatActivity).supportActionBar?.title = "UNITED KINGDOM NEWS"
 
         return binding.root

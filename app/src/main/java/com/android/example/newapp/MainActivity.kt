@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         //Set side bar navigation view to navigation controller
         NavigationUI.setupWithNavController(binding.sideBar, navController)
 
+        this.supportActionBar?.title = "LATEST HEADLINES"
+
     }
 
 

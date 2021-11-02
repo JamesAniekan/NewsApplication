@@ -30,6 +30,9 @@ class NewsViewModel : ViewModel() {
 
 
     init {
+        /**
+        getNews() function called on Activity's and Host Fragment's launch.
+         */
        getNews()
     }
 
