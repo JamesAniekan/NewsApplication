@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.android.example.newapp.databinding.FragmentNgBinding
 
 
+
 class NgFragment : Fragment() {
 
     private val viewModel: NewsViewModel by lazy { ViewModelProvider(this).get(NewsViewModel::class.java)}
@@ -21,7 +22,8 @@ class NgFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentNgBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_ng,container, false)
+        val binding: FragmentNgBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_ng,container, false)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -36,7 +38,11 @@ class NgFragment : Fragment() {
 
         viewModel.navigateNewsDetail.observe(viewLifecycleOwner, {
             if(it != null) {
-                this.findNavController().navigate(NgFragmentDirections.actionNgFragmentToNewsDetailFragment3(it))
+                this.findNavController().navigate(
+                    com.android.example.newapp.NgFragmentDirections.actionNgFragmentToNewsDetailFragment3(
+                        it
+                    )
+                )
                 viewModel.doneNavigatingNewsDetail()
             }
         })

@@ -20,7 +20,8 @@ class UkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val binding: FragmentUkBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_uk,container, false)
+        val binding: FragmentUkBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_uk,container, false)
 
         binding.lifecycleOwner = this
 
@@ -39,14 +40,18 @@ class UkFragment : Fragment() {
         })
         viewModel.navigateNewsDetail.observe(viewLifecycleOwner, {
            if(it != null) {
-                this.findNavController().navigate(UkFragmentDirections.actionUkFragmentToNewsDetailFragment3(it))
+                this.findNavController().navigate(
+                    com.android.example.newapp.UkFragmentDirections.actionUkFragmentToNewsDetailFragment3(
+                        it
+                    )
+                )
               viewModel.doneNavigatingNewsDetail()
             }
         })
 
         binding.healthNews.adapter = adapter
 
-        (activity as AppCompatActivity).supportActionBar?.title = "UNITED KINGDOM NEWS"
+        (activity as AppCompatActivity).supportActionBar?.title = "UK HEADLINES"
 
         return binding.root
     }

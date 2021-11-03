@@ -3,10 +3,11 @@ package com.android.example.newapp
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.android.example.newapp.Models.NetworkState
 import com.android.example.newapp.databinding.FragmentNewsBinding
 
 class NewsFragment : Fragment() {
@@ -17,7 +18,8 @@ class NewsFragment : Fragment() {
        inflater: LayoutInflater, container: ViewGroup?,
        savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        val binding:FragmentNewsBinding = DataBindingUtil.inflate( inflater, R.layout.fragment_news,container , false)
+        val binding:FragmentNewsBinding = DataBindingUtil.inflate( inflater,
+            R.layout.fragment_news,container , false)
         /**
          * Set fragment as binding lifecycle owner.
          */
@@ -40,7 +42,9 @@ class NewsFragment : Fragment() {
          **/
         viewModel.navigateNewsDetail.observe(viewLifecycleOwner, {
             if(it != null) {
-                this.findNavController().navigate(NewsFragmentDirections.actionNewsFragment7ToNewsDetailFragment3(it))
+                this.findNavController().navigate(
+                    com.android.example.newapp.NewsFragmentDirections.actionNewsFragment7ToNewsDetailFragment3(it)
+                )
                 viewModel.doneNavigatingNewsDetail()
             }
         })
@@ -63,7 +67,10 @@ class NewsFragment : Fragment() {
         })
 
         binding.newsList.adapter = adapter
-
+    /**
+    Change action bar title.
+     */
+        (activity as AppCompatActivity).supportActionBar?.title = "LATEST HEADLINES"
 
          return binding.root
     }

@@ -38,7 +38,11 @@ class SportFragment : Fragment() {
         })
         viewModel.navigateNewsDetail.observe(viewLifecycleOwner, {
             if(it != null) {
-                this.findNavController().navigate(SportFragmentDirections.actionSportFragmentToNewsDetailFragment3(it))
+                this.findNavController().navigate(
+                    com.android.example.newapp.SportFragmentDirections.actionSportFragmentToNewsDetailFragment3(
+                        it
+                    )
+                )
                 viewModel.doneNavigatingNewsDetail()
             }
         })

@@ -1,4 +1,4 @@
-package com.android.example.newapp
+package com.android.example.newapp.Models
 
 enum class NetworkState {
     LOADING,

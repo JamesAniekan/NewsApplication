@@ -7,7 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
+import com.android.example.newapp.R
 import com.android.example.newapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,12 +19,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //Bind the layouts
         @Suppress("UNUSED_VARIABLE")
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
+            R.layout.activity_main
+        )
         //Get the drawer layout
         drawerLayout = binding.drawerLayout
 
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.ukFragment, R.id.sportFragment, R.id.ngFragment), binding.drawerLayout)
+            R.id.ukFragment, R.id.sportFragment, R.id.ngFragment
+        ), binding.drawerLayout)
         //Get the navigation controller
        val navController = this.findNavController(R.id.nav_host_fragment)
         //Set drawerLayout to navController

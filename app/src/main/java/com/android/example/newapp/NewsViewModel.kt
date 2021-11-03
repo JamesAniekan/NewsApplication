@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.android.example.newapp.Article
+import com.android.example.newapp.Models.NetworkState
+import com.android.example.newapp.NewsObj
 import kotlinx.coroutines.launch
 
 class NewsViewModel : ViewModel() {
@@ -12,27 +15,18 @@ class NewsViewModel : ViewModel() {
     val networkState: LiveData<NetworkState>
         get() = _networkState
 
-    private val _response = MutableLiveData<String>()
-    val response: LiveData<String>
-        get() = _response
-
     private val _property = MutableLiveData<List<Article>>()
     val property: LiveData<List<Article>>
         get() = _property
-
-    private val _ukNewsList = MutableLiveData<List<Article>>()
-    val ukNewsList: LiveData<List<Article>>
-        get() = _ukNewsList
 
     private val _navigateNewsDetails = MutableLiveData<Article?>()
     val navigateNewsDetail: LiveData<Article?>
          get() = _navigateNewsDetails
 
-
+    /**
+    getNews() function called when Viewmodel is initialized.
+     */
     init {
-        /**
-        getNews() function called on Activity's and Host Fragment's launch.
-         */
        getNews()
     }
 
@@ -49,7 +43,7 @@ class NewsViewModel : ViewModel() {
 
             }catch (e: Exception){
                 _networkState.value = NetworkState.ERROR
-                _property.value = ArrayList()
+
             }
         }
     }
@@ -58,12 +52,10 @@ class NewsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val resultObj = NewsObj.newsService.getUkNewsProperties()
-                _response.value = "success: $resultObj"
-
                 _property.value = resultObj.articles
 
             }catch (e: Exception){
-                _response.value = "Failure ${e.message}"
+                _property.value = ArrayList()
             }
         }
     }
@@ -72,11 +64,10 @@ class NewsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val resultObj = NewsObj.newsService.getSportsNews()
-
                 _property.value = resultObj.articles
 
             }catch (e: Exception){
-                _response.value = "Failure ${e.message}"
+                _property.value = ArrayList()
             }
         }
     }
@@ -85,12 +76,10 @@ class NewsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val resultObj = NewsObj.newsService.getNgNews()
-                _response.value = "success: $resultObj"
-
                 _property.value = resultObj.articles
 
             }catch (e: Exception){
-                _response.value = "Failure ${e.message}"
+                _property.value = ArrayList()
             }
         }
     }
